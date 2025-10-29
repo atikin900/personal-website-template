@@ -24,7 +24,7 @@
 
 ### 1️⃣ Клонирование
 ```bash
-git clone https://github.com/yourusername/personal-website-template.git
+git clone https://github.com/atikin900/personal-website-template.git
 cd personal-website-template
 ```
 
@@ -109,7 +109,7 @@ new_site/
 
 ## 🐛 Помощь
 
-- 🐛 **Issues:** [GitHub Issues](https://github.com/yourusername/personal-website-template/issues)
+- 🐛 **Issues:** [GitHub Issues](https://github.com/atikin900/personal-website-template/issues)
 - 📖 **Документация:** Смотрите файлы в проекте
 
 ---
