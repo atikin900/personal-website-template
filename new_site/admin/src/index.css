@@ -1,0 +1,326 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 13% 9%;
+    --foreground: 220 9% 95%;
+    --card: 220 13% 11%;
+    --card-foreground: 220 9% 95%;
+    --popover: 220 13% 11%;
+    --popover-foreground: 220 9% 95%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 220 9% 95%;
+    --secondary: 220 13% 15%;
+    --secondary-foreground: 220 9% 95%;
+    --muted: 220 13% 15%;
+    --muted-foreground: 220 9% 65%;
+    --accent: 142 76% 36%;
+    --accent-foreground: 220 9% 95%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 220 9% 95%;
+    --border: 220 13% 15%;
+    --input: 220 13% 15%;
+    --ring: 142 76% 36%;
+    --radius: 0.75rem;
+    
+    /* Custom colors for modern dashboard */
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+    --info: 217 91% 60%;
+    --chart-1: 142 76% 36%;
+    --chart-2: 217 91% 60%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 268 83% 58%;
+    --chart-5: 340 82% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+/* Modern Dashboard Styles */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.metric-card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+}
+
+.metric-label {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  margin-top: 0.25rem;
+}
+
+.metric-change {
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.metric-change.positive {
+  color: hsl(var(--success));
+}
+
+.metric-change.negative {
+  color: hsl(var(--destructive));
+}
+
+.sidebar-nav {
+  background: hsl(var(--card));
+  border-right: 1px solid hsl(var(--border));
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  color: hsl(var(--muted-foreground));
+  text-decoration: none;
+  border-radius: 0.5rem;
+  margin: 0.25rem 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-item:hover {
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+
+.nav-item.active {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.chart-container {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(var(--primary-foreground));
+  font-weight: 600;
+  margin-right: 0.75rem;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+}
+
+.notification-badge {
+  background: hsl(var(--destructive));
+  color: hsl(var(--destructive-foreground));
+  border-radius: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Rich Text Editor Styles */
+.rich-text-editor-wrapper {
+  @apply w-full;
+}
+
+.rich-text-editor-wrapper [contenteditable]:empty::before {
+  content: attr(data-placeholder);
+  @apply text-gray-400;
+  pointer-events: none;
+}
+
+.rich-text-editor-wrapper [contenteditable]:focus::before {
+  content: none;
+}
+
+.rich-text-editor-wrapper .ProseMirror h1,
+.rich-text-editor-wrapper .ProseMirror h2,
+.rich-text-editor-wrapper .ProseMirror h3,
+.rich-text-editor-wrapper .ProseMirror h4,
+.rich-text-editor-wrapper .ProseMirror h5,
+.rich-text-editor-wrapper .ProseMirror h6 {
+  @apply font-bold text-white;
+}
+
+.rich-text-editor-wrapper .ProseMirror h1 { @apply text-2xl; }
+.rich-text-editor-wrapper .ProseMirror h2 { @apply text-xl; }
+.rich-text-editor-wrapper .ProseMirror h3 { @apply text-lg; }
+
+.rich-text-editor-wrapper .ProseMirror ul,
+.rich-text-editor-wrapper .ProseMirror ol {
+  @apply pl-6;
+}
+
+.rich-text-editor-wrapper .ProseMirror li {
+  @apply mb-1;
+}
+
+.rich-text-editor-wrapper .ProseMirror blockquote {
+  @apply border-l-4 border-gray-500 pl-4 italic text-gray-300;
+}
+
+.rich-text-editor-wrapper .ProseMirror code {
+  @apply bg-gray-600 text-yellow-300 px-1 py-0.5 rounded text-sm;
+}
+
+.rich-text-editor-wrapper .ProseMirror pre {
+  @apply bg-gray-800 text-green-300 p-4 rounded overflow-x-auto;
+}
+
+.rich-text-editor-wrapper .ProseMirror a {
+  @apply text-blue-400 underline hover:text-blue-300;
+}
+
+.rich-text-editor-wrapper .ProseMirror table {
+  @apply border-collapse border border-gray-600 w-full;
+}
+
+.rich-text-editor-wrapper .ProseMirror th,
+.rich-text-editor-wrapper .ProseMirror td {
+  @apply border border-gray-600 p-2;
+}
+
+.rich-text-editor-wrapper .ProseMirror th {
+  @apply bg-gray-600 font-bold;
+}
+
+.rich-text-editor-wrapper .ProseMirror img {
+  @apply max-w-full h-auto rounded;
+}
+
+.rich-text-editor-wrapper .ProseMirror hr {
+  @apply border-gray-600 my-4;
+}
+
+/* Toolbar styles */
+.rich-text-editor-wrapper .toolbar {
+  @apply bg-gray-800 border border-gray-600 rounded-t-md p-2 flex flex-wrap gap-1;
+}
+
+.rich-text-editor-wrapper .toolbar button {
+  @apply bg-gray-700 hover:bg-gray-600 text-white px-2 py-1 rounded text-sm border border-gray-600 transition-colors;
+}
+
+.rich-text-editor-wrapper .toolbar button.is-active {
+  @apply bg-blue-600 hover:bg-blue-500;
+}
+
+.rich-text-editor-wrapper .toolbar select {
+  @apply bg-gray-700 text-white border border-gray-600 rounded px-2 py-1 text-sm;
+}
+
+/* Bubble menu styles */
+.rich-text-editor-wrapper .bubble-menu {
+  @apply bg-gray-800 border border-gray-600 rounded shadow-lg p-1 flex gap-1;
+}
+
+.rich-text-editor-wrapper .bubble-menu button {
+  @apply bg-gray-700 hover:bg-gray-600 text-white px-2 py-1 rounded text-sm transition-colors;
+}
+
+.rich-text-editor-wrapper .bubble-menu button.is-active {
+  @apply bg-blue-600 hover:bg-blue-500;
+}
+
+/* Принудительное направление текста для rich-text редактора */
+div[contenteditable="true"] {
+  direction: ltr !important;
+  unicode-bidi: normal !important;
+  text-align: left !important;
+  writing-mode: horizontal-tb !important;
+}
+
+div[contenteditable="true"] * {
+  direction: ltr !important;
+  unicode-bidi: normal !important;
+}
+
+/* Дополнительная защита от зеркального текста */
+.rich-text-editor-wrapper div[contenteditable="true"] {
+  direction: ltr !important;
+  unicode-bidi: embed !important;
+  text-align: left !important;
+}/
+* Еще более сильная защита от зеркального текста */
+div[contenteditable="true"]:before,
+div[contenteditable="true"]:after {
+  content: "" !important;
+  direction: ltr !important;
+}
+
+/* Блокируем все RTL стили */
+div[contenteditable="true"] {
+  -webkit-writing-mode: horizontal-tb !important;
+  -ms-writing-mode: lr-tb !important;
+  writing-mode: horizontal-tb !important;
+}
+
+/* Принудительно устанавливаем курсор в начало при фокусе */
+div[contenteditable="true"]:focus {
+  direction: ltr !important;
+  unicode-bidi: normal !important;
+}
+
+/* Блокируем все возможные RTL CSS свойства */
+div[contenteditable="true"],
+div[contenteditable="true"] * {
+  direction: ltr !important;
+  unicode-bidi: normal !important;
+  text-align: left !important;
+  writing-mode: horizontal-tb !important;
+  -webkit-writing-mode: horizontal-tb !important;
+  -ms-writing-mode: lr-tb !important;
+}
